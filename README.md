@@ -6,66 +6,66 @@ Linux と macOS の両環境で利用できます。
 ## 📦 含まれる設定ファイル
 
 ### シェル環境
-- **`.zshrc`** - Zsh設定（推奨）
+- **`zshrc`** - Zsh設定（推奨）
   - AI支援コーディング用のエイリアスと関数
   - Git情報を含むプロンプト
   - 豊富なGitエイリアス
   - プロジェクト管理用のヘルパー関数
 
-- **`.bashrc`** - Bash設定
-  - `.zshrc`と同等の機能をBashで提供
+- **`bashrc`** - Bash設定
+  - `zshrc`と同等の機能をBashで提供
 
 ### Git
-- **`.gitconfig`** - Git設定
+- **`gitconfig`** - Git設定
   - 視覚的なログ表示
   - AI向けのエイリアス（summary, today, week）
   - 色付き差分表示
   
-- **`.gitignore_global`** - グローバルgitignore
+- **`gitignore_global`** - グローバルgitignore
   - OS、エディター、言語固有の一時ファイルを除外
   - Antigravity/Gemini固有のファイルも除外
 
 ### Gemini CLI
-- **`.gemini/settings.json`** - Gemini CLI設定
+- **`gemini/settings.json`** - Gemini CLI設定
   - デフォルトモデル設定（gemini-2.0-flash-exp）
   - 生成パラメータ設定
   - セーフティ設定
   - 自動承認コマンド設定
   
-- **`.env.gemini.template`** - 環境変数テンプレート
+- **`env.gemini.template`** - 環境変数テンプレート
   - APIキー設定用テンプレート
   - Vertex AI設定のサンプル
 
 ### Claude Code
-- **`.claude/settings.json`** - Claude Code設定
+- **`claude/settings.json`** - Claude Code設定
   - 自動承認コマンド設定
   - 自動承認ツール設定
   
-- **`.claude/CLAUDE.md`** - グローバルメモリー
+- **`claude/CLAUDE.md`** - グローバルメモリー
   - コーディング基準
   - AI Codingワークフロー
   - 環境情報
   
-- **`.env.claude.template`** - 環境変数テンプレート
+- **`env.claude.template`** - 環境変数テンプレート
   - Anthropic APIキー設定用テンプレート
 
 ### Codex CLI
-- **`.codex/config.toml`** - Codex CLI設定
+- **`codex/config.toml`** - Codex CLI設定
   - デフォルトモデル設定（o1）
   - 承認ポリシー設定
   - サンドボックス設定
   - プロファイル設定（deep-review, fast）
   
-- **`.env.codex.template`** - 環境変数テンプレート
+- **`env.codex.template`** - 環境変数テンプレート
   - OpenAI APIキー設定用テンプレート
 
 ### エディター
-- **`.vimrc`** - Vim設定
+- **`vimrc`** - Vim設定
   - コーディングに最適な設定
   - 便利なキーマッピング
   - ファイルタイプ別設定
 
-- **`.editorconfig`** - EditorConfig
+- **`editorconfig`** - EditorConfig
   - 複数のエディター間でコードスタイルを統一
   - 言語別のインデント設定
 
@@ -95,37 +95,37 @@ make setup
 
 ```bash
 # Zsh
-ln -sf ~/Devel/github.com/sopra/dotfiles/.zshrc ~/.zshrc
+ln -sf ~/Devel/github.com/sopra/dotfiles/zshrc ~/.zshrc
 
 # Bash
-ln -sf ~/Devel/github.com/sopra/dotfiles/.bashrc ~/.bashrc
+ln -sf ~/Devel/github.com/sopra/dotfiles/bashrc ~/.bashrc
 
 # Git
-ln -sf ~/Devel/github.com/sopra/dotfiles/.gitconfig ~/.gitconfig
-ln -sf ~/Devel/github.com/sopra/dotfiles/.gitignore_global ~/.gitignore_global
+ln -sf ~/Devel/github.com/sopra/dotfiles/gitconfig ~/.gitconfig
+ln -sf ~/Devel/github.com/sopra/dotfiles/gitignore_global ~/.gitignore_global
 
 # Vim
-ln -sf ~/Devel/github.com/sopra/dotfiles/.vimrc ~/.vimrc
+ln -sf ~/Devel/github.com/sopra/dotfiles/vimrc ~/.vimrc
 
 # EditorConfig
-ln -sf ~/Devel/github.com/sopra/dotfiles/.editorconfig ~/.editorconfig
+ln -sf ~/Devel/github.com/sopra/dotfiles/editorconfig ~/.editorconfig
 
 # Gemini CLI
 mkdir -p ~/.gemini
-ln -sf ~/Devel/github.com/sopra/dotfiles/.gemini/settings.json ~/.gemini/settings.json
+ln -sf ~/Devel/github.com/sopra/dotfiles/gemini/settings.json ~/.gemini/settings.json
 
 # Claude Code
 mkdir -p ~/.claude
-ln -sf ~/Devel/github.com/sopra/dotfiles/.claude/settings.json ~/.claude/settings.json
-ln -sf ~/Devel/github.com/sopra/dotfiles/.claude/CLAUDE.md ~/.claude/CLAUDE.md
+ln -sf ~/Devel/github.com/sopra/dotfiles/claude/settings.json ~/.claude/settings.json
+ln -sf ~/Devel/github.com/sopra/dotfiles/claude/CLAUDE.md ~/.claude/CLAUDE.md
 
 # Codex CLI
 mkdir -p ~/.codex
-ln -sf ~/Devel/github.com/sopra/dotfiles/.codex/config.toml ~/.codex/config.toml
+ln -sf ~/Devel/github.com/sopra/dotfiles/codex/config.toml ~/.codex/config.toml
 
 # 環境変数ファイル（初回のみ）
-cp ~/Devel/github.com/sopra/dotfiles/.env.gemini.template ~/.env
-# 必要に応じて .env.claude.template や .env.codex.template の内容も追記
+cp ~/Devel/github.com/sopra/dotfiles/env.gemini.template ~/.env
+# 必要に応じて env.claude.template や env.codex.template の内容も追記
 ```
 
 ### 4. Gitユーザー情報の設定

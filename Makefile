@@ -35,42 +35,42 @@ install-dotfiles: install-zsh install-bash install-git install-vim install-edito
 # Zshのインストール
 install-zsh:
 	@echo "Installing .zshrc..."
-	@ln -sf $(DOTFILES_DIR)/.zshrc $(HOME_DIR)/.zshrc
+	@ln -sf $(DOTFILES_DIR)/zshrc $(HOME_DIR)/.zshrc
 	@echo "✓ .zshrc installed"
 
 # Bashのインストール
 install-bash:
 	@echo "Installing .bashrc..."
-	@ln -sf $(DOTFILES_DIR)/.bashrc $(HOME_DIR)/.bashrc
+	@ln -sf $(DOTFILES_DIR)/bashrc $(HOME_DIR)/.bashrc
 	@echo "✓ .bashrc installed"
 
 # Git設定のインストール
 install-git:
 	@echo "Installing .gitconfig and .gitignore_global..."
-	@ln -sf $(DOTFILES_DIR)/.gitconfig $(HOME_DIR)/.gitconfig
-	@ln -sf $(DOTFILES_DIR)/.gitignore_global $(HOME_DIR)/.gitignore_global
+	@ln -sf $(DOTFILES_DIR)/gitconfig $(HOME_DIR)/.gitconfig
+	@ln -sf $(DOTFILES_DIR)/gitignore_global $(HOME_DIR)/.gitignore_global
 	@echo "✓ Git configuration installed"
 	@echo "⚠ Don't forget to set your Git user name and email in ~/.gitconfig.local"
 
 # Vimのインストール
 install-vim:
 	@echo "Installing .vimrc..."
-	@ln -sf $(DOTFILES_DIR)/.vimrc $(HOME_DIR)/.vimrc
+	@ln -sf $(DOTFILES_DIR)/vimrc $(HOME_DIR)/.vimrc
 	@echo "✓ .vimrc installed"
 
 # EditorConfigのインストール
 install-editorconfig:
 	@echo "Installing .editorconfig..."
-	@ln -sf $(DOTFILES_DIR)/.editorconfig $(HOME_DIR)/.editorconfig
+	@ln -sf $(DOTFILES_DIR)/editorconfig $(HOME_DIR)/.editorconfig
 	@echo "✓ .editorconfig installed"
 
 # Gemini CLI設定のインストール
 install-gemini:
 	@echo "Installing Gemini CLI settings..."
 	@mkdir -p $(HOME_DIR)/.gemini
-	@ln -sf $(DOTFILES_DIR)/.gemini/settings.json $(HOME_DIR)/.gemini/settings.json
+	@ln -sf $(DOTFILES_DIR)/gemini/settings.json $(HOME_DIR)/.gemini/settings.json
 	@if [ ! -f $(HOME_DIR)/.env ]; then \
-		cp $(DOTFILES_DIR)/.env.gemini.template $(HOME_DIR)/.env; \
+		cp $(DOTFILES_DIR)/env.gemini.template $(HOME_DIR)/.env; \
 		echo "✓ Created ~/.env from template"; \
 		echo "⚠ Please edit ~/.env and add your GEMINI_API_KEY"; \
 	else \
@@ -82,15 +82,15 @@ install-gemini:
 install-claude:
 	@echo "Installing Claude Code settings..."
 	@mkdir -p $(HOME_DIR)/.claude
-	@ln -sf $(DOTFILES_DIR)/.claude/settings.json $(HOME_DIR)/.claude/settings.json
-	@ln -sf $(DOTFILES_DIR)/.claude/CLAUDE.md $(HOME_DIR)/.claude/CLAUDE.md
+	@ln -sf $(DOTFILES_DIR)/claude/settings.json $(HOME_DIR)/.claude/settings.json
+	@ln -sf $(DOTFILES_DIR)/claude/CLAUDE.md $(HOME_DIR)/.claude/CLAUDE.md
 	@echo "✓ Claude Code settings installed"
 
 # Codex CLI設定のインストール
 install-codex:
 	@echo "Installing Codex CLI settings..."
 	@mkdir -p $(HOME_DIR)/.codex
-	@ln -sf $(DOTFILES_DIR)/.codex/config.toml $(HOME_DIR)/.codex/config.toml
+	@ln -sf $(DOTFILES_DIR)/codex/config.toml $(HOME_DIR)/.codex/config.toml
 	@echo "✓ Codex CLI settings installed"
 
 # アンインストール
