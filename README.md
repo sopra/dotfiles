@@ -59,6 +59,14 @@ Linux と macOS の両環境で利用できます。
 - **`.env.codex.template`** - 環境変数テンプレート
   - OpenAI APIキー設定用テンプレート
 
+### 共通AI設定
+- **`AGENTS.md`** - AIコーディングツール向け汎用ガイドライン
+  - コーディング基準とベストプラクティス
+  - AIコーディングワークフロー
+  - Git コミット規約
+  - デバッグ戦略
+  - すべてのAIツール（Gemini CLI、Claude Code、Codex CLI等）から参照可能
+
 ### エディター
 - **`.vimrc`** - Vim設定
   - コーディングに最適な設定
