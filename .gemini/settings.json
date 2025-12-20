@@ -35,5 +35,31 @@
         "git commit*",
         "ls*",
         "cat*"
+    ],
+    "blockedPaths": [
+        "/etc/*",
+        "/usr/bin/*",
+        "/usr/sbin/*",
+        "/bin/*",
+        "/sbin/*",
+        "/System/*",
+        "/Library/*",
+        "/var/db/*",
+        "/var/root/*",
+        "/private/etc/*",
+        "/private/var/db/*",
+        "*.plist",
+        "/boot/*",
+        "/root/*"
+    ],
+    "blockedCommands": [
+        "sudo*",
+        "rm -rf /*",
+        "chmod 777*",
+        "chown*",
+        "mkfs*",
+        "dd if=*",
+        ":(){ :|:& };:",
+        "mv * /*"
     ]
 }

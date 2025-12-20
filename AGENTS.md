@@ -243,6 +243,45 @@ Always confirm before running:
 - Deployment commands
 - Irreversible operations
 
+### Protected System Paths
+The following system paths are **BLOCKED** for all AI tools to prevent accidental damage:
+
+#### Critical System Directories
+- `/etc/*` - System configuration files
+- `/usr/bin/*`, `/usr/sbin/*` - System binaries
+- `/bin/*`, `/sbin/*` - Essential system binaries
+- `/System/*` - macOS system files
+- `/Library/*` - macOS system library
+- `/boot/*` - Boot loader files (Linux)
+- `/root/*` - Root user home directory
+
+#### Protected Data Directories
+- `/var/db/*` - System databases
+- `/var/root/*` - Alternative root directory
+- `/private/etc/*` - macOS private configuration
+- `/private/var/db/*` - macOS private databases
+
+#### File Types to Avoid
+- `*.plist` - macOS system preference files
+
+#### Dangerous Commands
+These commands are **NEVER** allowed:
+- `sudo*` - Privilege escalation
+- `rm -rf /*` - Recursive deletion from root
+- `chmod 777*` - Overly permissive permissions
+- `chown*` - Ownership changes
+- `mkfs*` - Filesystem formatting
+- `dd if=*` - Low-level disk operations
+- `:(){ :|:& };:` - Fork bomb
+- `mv * /*` - Moving everything to root
+
+### Safe Working Areas
+AI tools should **ONLY** operate in:
+- User home directory: `~/` or `/Users/username/`
+- Project directories under home
+- Temporary directories: `/tmp/` (with caution)
+- User-created directories in safe locations
+
 ---
 
 ## 📚 Best Practices
