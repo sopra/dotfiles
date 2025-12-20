@@ -2,7 +2,7 @@ BREW_PATH=/opt/homebrew/bin/brew
 DOTFILES_DIR=$(shell pwd)
 HOME_DIR=$(HOME)
 
-.PHONY: help setup install-homebrew install-xcode-cli install-dotfiles install-zsh install-bash install-git install-vim install-editorconfig install-gemini uninstall
+.PHONY: help setup install-homebrew install-xcode-cli install-dotfiles install-zsh install-bash install-git install-vim install-editorconfig install-gemini install-claude install-codex uninstall
 
 # デフォルトターゲット
 help:
@@ -17,6 +17,8 @@ help:
 	@echo "  make install-vim        - Install .vimrc"
 	@echo "  make install-editorconfig - Install .editorconfig"
 	@echo "  make install-gemini     - Install Gemini CLI settings"
+	@echo "  make install-claude     - Install Claude Code settings"
+	@echo "  make install-codex      - Install Codex CLI settings"
 	@echo "  make uninstall          - Remove all symlinks"
 	@echo "  make install-homebrew   - Install Homebrew (macOS only)"
 	@echo "  make install-xcode-cli  - Install Xcode Command Line Tools"
@@ -27,7 +29,7 @@ setup: install-homebrew install-dotfiles
 	@echo "Please restart your shell or run: source ~/.zshrc (or ~/.bashrc)"
 
 # すべてのdotfilesをインストール
-install-dotfiles: install-zsh install-bash install-git install-vim install-editorconfig install-gemini
+install-dotfiles: install-zsh install-bash install-git install-vim install-editorconfig install-gemini install-claude install-codex
 	@echo "✓ All dotfiles installed!"
 
 # Zshのインストール
@@ -74,7 +76,22 @@ install-gemini:
 	else \
 		echo "ℹ ~/.env already exists, skipping"; \
 	fi
-	@echo "✓ .editorconfig installed"
+	@echo "✓ Gemini CLI settings installed"
+
+# Claude Code設定のインストール
+install-claude:
+	@echo "Installing Claude Code settings..."
+	@mkdir -p $(HOME_DIR)/.claude
+	@ln -sf $(DOTFILES_DIR)/.claude/settings.json $(HOME_DIR)/.claude/settings.json
+	@ln -sf $(DOTFILES_DIR)/.claude/CLAUDE.md $(HOME_DIR)/.claude/CLAUDE.md
+	@echo "✓ Claude Code settings installed"
+
+# Codex CLI設定のインストール
+install-codex:
+	@echo "Installing Codex CLI settings..."
+	@mkdir -p $(HOME_DIR)/.codex
+	@ln -sf $(DOTFILES_DIR)/.codex/config.toml $(HOME_DIR)/.codex/config.toml
+	@echo "✓ Codex CLI settings installed"
 
 # アンインストール
 uninstall:
@@ -86,6 +103,9 @@ uninstall:
 	@rm -f $(HOME_DIR)/.vimrc
 	@rm -f $(HOME_DIR)/.editorconfig
 	@rm -f $(HOME_DIR)/.gemini/settings.json
+	@rm -f $(HOME_DIR)/.claude/settings.json
+	@rm -f $(HOME_DIR)/.claude/CLAUDE.md
+	@rm -f $(HOME_DIR)/.codex/config.toml
 	@echo "✓ Dotfiles uninstalled"
 
 # Homebrewのインストール

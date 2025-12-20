@@ -30,10 +30,34 @@ Linux と macOS の両環境で利用できます。
   - デフォルトモデル設定（gemini-2.0-flash-exp）
   - 生成パラメータ設定
   - セーフティ設定
+  - 自動承認コマンド設定
   
 - **`.env.gemini.template`** - 環境変数テンプレート
   - APIキー設定用テンプレート
   - Vertex AI設定のサンプル
+
+### Claude Code
+- **`.claude/settings.json`** - Claude Code設定
+  - 自動承認コマンド設定
+  - 自動承認ツール設定
+  
+- **`.claude/CLAUDE.md`** - グローバルメモリー
+  - コーディング基準
+  - AI Codingワークフロー
+  - 環境情報
+  
+- **`.env.claude.template`** - 環境変数テンプレート
+  - Anthropic APIキー設定用テンプレート
+
+### Codex CLI
+- **`.codex/config.toml`** - Codex CLI設定
+  - デフォルトモデル設定（o1）
+  - 承認ポリシー設定
+  - サンドボックス設定
+  - プロファイル設定（deep-review, fast）
+  
+- **`.env.codex.template`** - 環境変数テンプレート
+  - OpenAI APIキー設定用テンプレート
 
 ### エディター
 - **`.vimrc`** - Vim設定
@@ -90,8 +114,18 @@ ln -sf ~/Devel/github.com/sopra/dotfiles/.editorconfig ~/.editorconfig
 mkdir -p ~/.gemini
 ln -sf ~/Devel/github.com/sopra/dotfiles/.gemini/settings.json ~/.gemini/settings.json
 
+# Claude Code
+mkdir -p ~/.claude
+ln -sf ~/Devel/github.com/sopra/dotfiles/.claude/settings.json ~/.claude/settings.json
+ln -sf ~/Devel/github.com/sopra/dotfiles/.claude/CLAUDE.md ~/.claude/CLAUDE.md
+
+# Codex CLI
+mkdir -p ~/.codex
+ln -sf ~/Devel/github.com/sopra/dotfiles/.codex/config.toml ~/.codex/config.toml
+
 # 環境変数ファイル（初回のみ）
 cp ~/Devel/github.com/sopra/dotfiles/.env.gemini.template ~/.env
+# 必要に応じて .env.claude.template や .env.codex.template の内容も追記
 ```
 
 ### 4. Gitユーザー情報の設定
@@ -106,14 +140,22 @@ cat > ~/.gitconfig.local << 'EOF'
 EOF
 ```
 
-### 5. Gemini API キーの設定
+### 5. AI CLI ツールのAPIキー設定
 
-`~/.env` ファイルを編集して、Gemini API キーを設定してください：
+`~/.env` ファイルを編集して、使用するAI CLIツールのAPIキーを設定してください：
 
 ```bash
-# Google AI Studio (https://makersuite.google.com/app/apikey) から
-# APIキーを取得してください
-GEMINI_API_KEY=your_actual_api_key_here
+# Gemini CLI (Google AI Studio)
+# https://makersuite.google.com/app/apikey
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# Claude Code (Anthropic)
+# https://console.anthropic.com/
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+
+# Codex CLI (OpenAI)
+# https://platform.openai.com/api-keys
+OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 ## 🎯 AI Codingに便利な機能
@@ -184,10 +226,18 @@ git changed  # 変更されたファイル一覧
 以下のツールをインストールすると、さらに快適になります：
 
 ```bash
-# Gemini CLI（AI支援ツール）
+# AI CLI Tools
+# Gemini CLI
 npm install -g @google/generative-ai-cli
 # または
 brew install gemini-cli
+
+# Claude Code
+npm install -g @anthropic-ai/claude-code
+# または公式サイトからダウンロード
+
+# Codex CLI
+# https://openai.com/index/introducing-operator/ から入手
 
 # macOS (Homebrew)
 brew install fzf        # ファジーファインダー

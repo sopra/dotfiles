@@ -1,0 +1,18 @@
+{
+    "autoApproveCommands": [
+        "git status",
+        "git log*",
+        "git diff*",
+        "git add*",
+        "git commit*",
+        "ls*",
+        "cat*",
+        "pwd",
+        "tree*"
+    ],
+    "autoApproveTools": [
+        "read_file",
+        "list_directory",
+        "search_files"
+    ]
+}

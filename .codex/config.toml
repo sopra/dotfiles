@@ -1,0 +1,61 @@
+# Codex CLI Configuration
+# ~/.codex/config.toml
+
+# ----- Default Model -----
+model = "o1"
+
+# ----- Approval Policy -----
+# Auto-approve safe commands
+[approval]
+auto_approve = [
+    "git status",
+    "git log*",
+    "git diff*",
+    "git add*",
+    "git commit*",
+    "ls*",
+    "cat*",
+    "pwd",
+    "tree*",
+    "echo*",
+]
+
+# ----- Sandbox Settings -----
+[sandbox]
+# Allow filesystem access
+filesystem_access = true
+# Allow network access
+network_access = false
+
+# ----- Reasoning -----
+[reasoning]
+# Reasoning depth (0-10)
+depth = 5
+# Show reasoning summary
+show_summary = true
+
+# ----- MCP Servers -----
+# Model Context Protocol servers configuration
+[mcp]
+# Add your MCP servers here if needed
+# [mcp.servers.example]
+# command = "example-server"
+# args = []
+
+# ----- Feature Flags -----
+[features]
+# Enable experimental features
+experimental = false
+
+# ----- Profiles -----
+# Example: Deep review profile
+[profiles.deep-review]
+model = "o1"
+reasoning.depth = 10
+reasoning.show_summary = true
+
+# Example: Lightweight profile
+[profiles.fast]
+model = "o1-mini"
+reasoning.depth = 3
+reasoning.show_summary = false
