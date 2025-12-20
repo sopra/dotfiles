@@ -26,5 +26,14 @@
         }
     ],
     "tools": [],
-    "mcpServers": {}
+    "mcpServers": {},
+    "autoApproveCommands": [
+        "git status",
+        "git log*",
+        "git diff*",
+        "git add*",
+        "git commit*",
+        "ls*",
+        "cat*"
+    ]
 }
