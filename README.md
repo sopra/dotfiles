@@ -25,6 +25,16 @@ Linux と macOS の両環境で利用できます。
   - OS、エディター、言語固有の一時ファイルを除外
   - Antigravity/Gemini固有のファイルも除外
 
+### Gemini CLI
+- **`.gemini/settings.json`** - Gemini CLI設定
+  - デフォルトモデル設定（gemini-2.0-flash-exp）
+  - 生成パラメータ設定
+  - セーフティ設定
+  
+- **`.env.gemini.template`** - 環境変数テンプレート
+  - APIキー設定用テンプレート
+  - Vertex AI設定のサンプル
+
 ### エディター
 - **`.vimrc`** - Vim設定
   - コーディングに最適な設定
@@ -75,6 +85,13 @@ ln -sf ~/Devel/github.com/sopra/dotfiles/.vimrc ~/.vimrc
 
 # EditorConfig
 ln -sf ~/Devel/github.com/sopra/dotfiles/.editorconfig ~/.editorconfig
+
+# Gemini CLI
+mkdir -p ~/.gemini
+ln -sf ~/Devel/github.com/sopra/dotfiles/.gemini/settings.json ~/.gemini/settings.json
+
+# 環境変数ファイル（初回のみ）
+cp ~/Devel/github.com/sopra/dotfiles/.env.gemini.template ~/.env
 ```
 
 ### 4. Gitユーザー情報の設定
@@ -87,6 +104,16 @@ cat > ~/.gitconfig.local << 'EOF'
     name = Your Name
     email = your.email@example.com
 EOF
+```
+
+### 5. Gemini API キーの設定
+
+`~/.env` ファイルを編集して、Gemini API キーを設定してください：
+
+```bash
+# Google AI Studio (https://makersuite.google.com/app/apikey) から
+# APIキーを取得してください
+GEMINI_API_KEY=your_actual_api_key_here
 ```
 
 ## 🎯 AI Codingに便利な機能
@@ -157,6 +184,11 @@ git changed  # 変更されたファイル一覧
 以下のツールをインストールすると、さらに快適になります：
 
 ```bash
+# Gemini CLI（AI支援ツール）
+npm install -g @google/generative-ai-cli
+# または
+brew install gemini-cli
+
 # macOS (Homebrew)
 brew install fzf        # ファジーファインダー
 brew install tree       # ディレクトリツリー表示

@@ -2,7 +2,7 @@ BREW_PATH=/opt/homebrew/bin/brew
 DOTFILES_DIR=$(shell pwd)
 HOME_DIR=$(HOME)
 
-.PHONY: help setup install-homebrew install-xcode-cli install-dotfiles install-zsh install-bash install-git install-vim install-editorconfig uninstall
+.PHONY: help setup install-homebrew install-xcode-cli install-dotfiles install-zsh install-bash install-git install-vim install-editorconfig install-gemini uninstall
 
 # デフォルトターゲット
 help:
@@ -16,6 +16,7 @@ help:
 	@echo "  make install-git        - Install .gitconfig and .gitignore_global"
 	@echo "  make install-vim        - Install .vimrc"
 	@echo "  make install-editorconfig - Install .editorconfig"
+	@echo "  make install-gemini     - Install Gemini CLI settings"
 	@echo "  make uninstall          - Remove all symlinks"
 	@echo "  make install-homebrew   - Install Homebrew (macOS only)"
 	@echo "  make install-xcode-cli  - Install Xcode Command Line Tools"
@@ -26,7 +27,7 @@ setup: install-homebrew install-dotfiles
 	@echo "Please restart your shell or run: source ~/.zshrc (or ~/.bashrc)"
 
 # すべてのdotfilesをインストール
-install-dotfiles: install-zsh install-bash install-git install-vim install-editorconfig
+install-dotfiles: install-zsh install-bash install-git install-vim install-editorconfig install-gemini
 	@echo "✓ All dotfiles installed!"
 
 # Zshのインストール
@@ -61,6 +62,20 @@ install-editorconfig:
 	@ln -sf $(DOTFILES_DIR)/.editorconfig $(HOME_DIR)/.editorconfig
 	@echo "✓ .editorconfig installed"
 
+# Gemini CLI設定のインストール
+install-gemini:
+	@echo "Installing Gemini CLI settings..."
+	@mkdir -p $(HOME_DIR)/.gemini
+	@ln -sf $(DOTFILES_DIR)/.gemini/settings.json $(HOME_DIR)/.gemini/settings.json
+	@if [ ! -f $(HOME_DIR)/.env ]; then \
+		cp $(DOTFILES_DIR)/.env.gemini.template $(HOME_DIR)/.env; \
+		echo "✓ Created ~/.env from template"; \
+		echo "⚠ Please edit ~/.env and add your GEMINI_API_KEY"; \
+	else \
+		echo "ℹ ~/.env already exists, skipping"; \
+	fi
+	@echo "✓ .editorconfig installed"
+
 # アンインストール
 uninstall:
 	@echo "Removing dotfiles symlinks..."
@@ -70,6 +85,7 @@ uninstall:
 	@rm -f $(HOME_DIR)/.gitignore_global
 	@rm -f $(HOME_DIR)/.vimrc
 	@rm -f $(HOME_DIR)/.editorconfig
+	@rm -f $(HOME_DIR)/.gemini/settings.json
 	@echo "✓ Dotfiles uninstalled"
 
 # Homebrewのインストール

@@ -1,6 +1,10 @@
 # ローカル専用の設定ファイル
 *.local
 
+# 環境変数ファイル（テンプレート以外）
+.env
+!.env*.template
+
 # VSCode設定（一部のログファイルは除外）
 .vscode/*.log
 
