@@ -2,7 +2,7 @@
 # ~/.codex/config.toml
 
 # ----- Default Model -----
-model = "o1"
+model = "gpt-4o"
 
 # ----- Approval Policy -----
 # Auto-approve safe commands
@@ -50,12 +50,12 @@ experimental = false
 # ----- Profiles -----
 # Example: Deep review profile
 [profiles.deep-review]
-model = "o1"
+model = "gpt-4o"
 reasoning.depth = 10
 reasoning.show_summary = true
 
 # Example: Lightweight profile
 [profiles.fast]
-model = "o1-mini"
+model = "gpt-4o-mini"
 reasoning.depth = 3
 reasoning.show_summary = false
