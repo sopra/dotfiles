@@ -1,0 +1,113 @@
+# ============================================
+# Antigravity & Gemini Optimized .gitconfig
+# ============================================
+
+[user]
+	# ユーザー名とメールアドレスを設定してください
+	# name = Your Name
+	# email = your.email@example.com
+
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+	autocrlf = input
+	# 日本語ファイル名を正しく表示
+	quotepath = false
+
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	status = auto
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = red
+
+[alias]
+	# 基本的なエイリアス
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	cm = commit -m
+	
+	# より高度なエイリアス
+	last = log -1 HEAD
+	unstage = reset HEAD --
+	
+	# 視覚的なログ表示 (AI が理解しやすい)
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
+	
+	# ブランチ一覧（最終更新日付付き）
+	branches = branch -a -vv
+	
+	# 変更されたファイル一覧
+	changed = diff --name-only
+	
+	# AI向け：最近の変更を要約
+	summary = log --oneline --no-merges -20
+	
+	# AI向け：今日の作業内容
+	today = log --since=midnight --author='$(git config user.name)' --oneline
+	
+	# AI向け：今週の作業内容  
+	week = log --since='1 week ago' --author='$(git config user.name)' --oneline
+	
+	# Undo last commit (keep changes)
+	undo = reset --soft HEAD^
+	
+	# Show contributors
+	contributors = shortlog --summary --numbered --email
+
+[push]
+	default = current
+	autoSetupRemote = true
+
+[pull]
+	rebase = false
+
+[init]
+	defaultBranch = main
+
+[diff]
+	# より読みやすい差分表示
+	algorithm = patience
+	compactionHeuristic = true
+
+[merge]
+	# コンフリクト時により詳細な情報を表示
+	conflictstyle = diff3
+
+[fetch]
+	prune = true
+
+[rerere]
+	# 同じコンフリクトの解決を記憶
+	enabled = true
+
+[help]
+	autocorrect = 1
+
+# ----- Platform-specific settings -----
+[credential]
+	# macOS の場合、Keychainを使用
+	# helper = osxkeychain
+	
+# ----- Include local config -----
+# ローカル専用の設定は ~/.gitconfig.local に記述
+[include]
+	path = ~/.gitconfig.local

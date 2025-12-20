@@ -1,0 +1,177 @@
+# ============================================
+# Global .gitignore
+# ============================================
+
+# ----- OS generated files -----
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ----- IDE / Editor files -----
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim
+*.swp
+*.swo
+*~
+.*.swp
+.*.swo
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ----- Language specific -----
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+.node_repl_history
+*.tgz
+.yarn-integrity
+
+# Ruby
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+/tmp/
+.bundle/
+vendor/bundle/
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# Rust
+target/
+Cargo.lock
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+.gradle/
+build/
+
+# ----- Compiled files -----
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+
+# ----- Logs -----
+*.log
+logs/
+*.log.*
+
+# ----- Temporary files -----
+*.tmp
+*.temp
+*.bak
+*.cache
+*.orig
+
+# ----- Build directories -----
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+
+# ----- Package managers -----
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+Gemfile.lock
+composer.lock
+poetry.lock
+
+# ----- Environment variables -----
+.env
+.env.local
+.env.*.local
+.envrc
+
+# ----- AI / ML -----
+*.h5
+*.pb
+*.onnx
+*.pt
+*.pth
+checkpoints/
+wandb/
+
+# ----- Databases -----
+*.sqlite
+*.sqlite3
+*.db
+
+# ----- Antigravity / Gemini specific -----
+.gemini/
+.antigravity/
+*.draft
+
+# ----- Misc -----
+.sass-cache/
+*.css.map
+*.js.map
