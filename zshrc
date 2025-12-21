@@ -3,8 +3,7 @@
 # ============================================
 
 # ----- Basic Settings -----
-export LANG=C
-export LC_ALL=C
+export LANG=ja_JP.UTF-8
 
 # ----- History Settings -----
 HISTFILE=~/.zsh_history
