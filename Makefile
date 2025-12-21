@@ -69,6 +69,7 @@ install-gemini:
 	@echo "Installing Gemini CLI settings..."
 	@mkdir -p $(HOME_DIR)/.gemini
 	@ln -sf $(DOTFILES_DIR)/gemini/settings.json $(HOME_DIR)/.gemini/settings.json
+	@ln -sf $(DOTFILES_DIR)/AGENTS.md $(HOME_DIR)/.gemini/AGENTS.md
 	@if [ ! -f $(HOME_DIR)/.env ]; then \
 		cp $(DOTFILES_DIR)/env.gemini.template $(HOME_DIR)/.env; \
 		echo "✓ Created ~/.env from template"; \
@@ -84,6 +85,7 @@ install-claude:
 	@mkdir -p $(HOME_DIR)/.claude
 	@ln -sf $(DOTFILES_DIR)/claude/settings.json $(HOME_DIR)/.claude/settings.json
 	@ln -sf $(DOTFILES_DIR)/claude/CLAUDE.md $(HOME_DIR)/.claude/CLAUDE.md
+	@ln -sf $(DOTFILES_DIR)/AGENTS.md $(HOME_DIR)/.claude/AGENTS.md
 	@echo "✓ Claude Code settings installed"
 
 # Codex CLI設定のインストール
@@ -91,6 +93,7 @@ install-codex:
 	@echo "Installing Codex CLI settings..."
 	@mkdir -p $(HOME_DIR)/.codex
 	@ln -sf $(DOTFILES_DIR)/codex/config.toml $(HOME_DIR)/.codex/config.toml
+	@ln -sf $(DOTFILES_DIR)/AGENTS.md $(HOME_DIR)/.codex/AGENTS.md
 	@echo "✓ Codex CLI settings installed"
 
 # アンインストール
@@ -103,9 +106,12 @@ uninstall:
 	@rm -f $(HOME_DIR)/.vimrc
 	@rm -f $(HOME_DIR)/.editorconfig
 	@rm -f $(HOME_DIR)/.gemini/settings.json
+	@rm -f $(HOME_DIR)/.gemini/AGENTS.md
 	@rm -f $(HOME_DIR)/.claude/settings.json
 	@rm -f $(HOME_DIR)/.claude/CLAUDE.md
+	@rm -f $(HOME_DIR)/.claude/AGENTS.md
 	@rm -f $(HOME_DIR)/.codex/config.toml
+	@rm -f $(HOME_DIR)/.codex/AGENTS.md
 	@echo "✓ Dotfiles uninstalled"
 
 # Homebrewのインストール
