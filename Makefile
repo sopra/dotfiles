@@ -2,7 +2,7 @@ BREW_PATH=/opt/homebrew/bin/brew
 DOTFILES_DIR=$(shell pwd)
 HOME_DIR=$(HOME)
 
-.PHONY: help setup install-homebrew install-xcode-cli install-dotfiles install-zsh install-bash install-git install-vim install-editorconfig install-gemini install-claude install-codex uninstall
+.PHONY: help setup install-homebrew install-xcode-cli install-dotfiles install-zsh install-bash install-git install-vim install-editorconfig install-screen install-tmux install-gemini install-claude install-codex uninstall
 
 # デフォルトターゲット
 help:
@@ -16,6 +16,8 @@ help:
 	@echo "  make install-git        - Install .gitconfig and .gitignore_global"
 	@echo "  make install-vim        - Install .vimrc"
 	@echo "  make install-editorconfig - Install .editorconfig"
+	@echo "  make install-screen     - Install .screenrc"
+	@echo "  make install-tmux       - Install .tmux.conf"
 	@echo "  make install-gemini     - Install Gemini CLI settings"
 	@echo "  make install-claude     - Install Claude Code settings"
 	@echo "  make install-codex      - Install Codex CLI settings"
@@ -29,7 +31,7 @@ setup: install-homebrew install-dotfiles
 	@echo "Please restart your shell or run: source ~/.zshrc (or ~/.bashrc)"
 
 # すべてのdotfilesをインストール
-install-dotfiles: install-zsh install-bash install-git install-vim install-editorconfig install-gemini install-claude install-codex
+install-dotfiles: install-zsh install-bash install-git install-vim install-editorconfig install-screen install-tmux install-gemini install-claude install-codex
 	@echo "✓ All dotfiles installed!"
 
 # Zshのインストール
@@ -63,6 +65,18 @@ install-editorconfig:
 	@echo "Installing .editorconfig..."
 	@ln -sf $(DOTFILES_DIR)/editorconfig $(HOME_DIR)/.editorconfig
 	@echo "✓ .editorconfig installed"
+
+# Screenのインストール
+install-screen:
+	@echo "Installing .screenrc..."
+	@ln -sf $(DOTFILES_DIR)/screenrc $(HOME_DIR)/.screenrc
+	@echo "✓ .screenrc installed"
+
+# tmuxのインストール
+install-tmux:
+	@echo "Installing .tmux.conf..."
+	@ln -sf $(DOTFILES_DIR)/tmux.conf $(HOME_DIR)/.tmux.conf
+	@echo "✓ .tmux.conf installed"
 
 # Gemini CLI設定のインストール
 install-gemini:
@@ -105,6 +119,8 @@ uninstall:
 	@rm -f $(HOME_DIR)/.gitignore_global
 	@rm -f $(HOME_DIR)/.vimrc
 	@rm -f $(HOME_DIR)/.editorconfig
+	@rm -f $(HOME_DIR)/.screenrc
+	@rm -f $(HOME_DIR)/.tmux.conf
 	@rm -f $(HOME_DIR)/.gemini/settings.json
 	@rm -f $(HOME_DIR)/.gemini/AGENTS.md
 	@rm -f $(HOME_DIR)/.claude/settings.json

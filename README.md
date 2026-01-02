@@ -67,6 +67,21 @@ Linux と macOS の両環境で利用できます。
   - デバッグ戦略
   - すべてのAIツール（Gemini CLI、Claude Code、Codex CLI等）から参照可能
 
+### ターミナルマルチプレクサ
+- **`screenrc`** - GNU Screen設定
+  - 10000行スクロールバックバッファ
+  - 256色サポート
+  - Vim風キーバインド（hjkl移動）
+  - ステータスライン表示
+
+- **`tmux.conf`** - tmux設定
+  - Prefix: `Ctrl-a`（screenと統一）
+  - 10000行スクロールバックバッファ
+  - True Color サポート
+  - マウスサポート
+  - Vim風キーバインド
+  - macOS/Linuxクリップボード連携
+
 ### エディター
 - **`vimrc`** - Vim設定
   - コーディングに最適な設定
@@ -117,6 +132,12 @@ ln -sf ~/Devel/github.com/sopra/dotfiles/vimrc ~/.vimrc
 
 # EditorConfig
 ln -sf ~/Devel/github.com/sopra/dotfiles/editorconfig ~/.editorconfig
+
+# Screen
+ln -sf ~/Devel/github.com/sopra/dotfiles/screenrc ~/.screenrc
+
+# tmux
+ln -sf ~/Devel/github.com/sopra/dotfiles/tmux.conf ~/.tmux.conf
 
 # Gemini CLI
 mkdir -p ~/.gemini
@@ -252,6 +273,8 @@ brew install fzf        # ファジーファインダー
 brew install tree       # ディレクトリツリー表示
 brew install bat        # catの改良版
 brew install ripgrep    # grepの高速版
+brew install tmux       # ターミナルマルチプレクサ
+brew install screen     # GNU Screen
 brew install exa        # lsの改良版
 ```
 
